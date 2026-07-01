@@ -281,7 +281,9 @@ async function ask(){
   const q=$("#q").value.trim(); if(!q){toast("Type a question first");return}
   $("#askBtn").disabled=true; $("#askResult").classList.remove("show"); $("#askLoader").classList.add("show");
   try{
-    const r=await (await fetch("/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:q})})).json();
+    const resp=await fetch("/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query:q})});
+    const r=await resp.json();
+    if(!resp.ok){toast(r.detail||"Request failed — is LM Studio running?");return}
     const guard=/not found in the provided policy/i.test(r.answer);
     const srcs=[...new Map(r.sources.map(s=>[s.source+s.score,s])).values()];
     $("#askResult").innerHTML=`
@@ -310,7 +312,9 @@ async function diff(){
   if(v1===v2){toast("Pick two different versions");return}
   $("#diffBtn").disabled=true; $("#diffHint").style.display="none"; $("#changes").innerHTML=""; $("#diffLoader").classList.add("show");
   try{
-    const r=await (await fetch("/api/diff",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({v1,v2})})).json();
+    const resp=await fetch("/api/diff",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({v1,v2})});
+    const r=await resp.json();
+    if(!resp.ok){toast(r.detail||"Request failed — is LM Studio running?");return}
     if(!r.changes||!r.changes.length){$("#changes").innerHTML=`<div class="empty">No structured changes parsed.</div><pre>${esc(r.raw||"")}</pre>`}
     else{
       $("#changes").innerHTML=r.changes.map(c=>{

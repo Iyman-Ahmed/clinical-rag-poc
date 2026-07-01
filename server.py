@@ -9,9 +9,8 @@ or:   python server.py
 import time
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 import config
@@ -62,20 +61,32 @@ def documents():
     return {"documents": list_documents()}
 
 
+_LLM_DOWN = (
+    "Could not reach the LLM. Is LM Studio running with a model loaded and its "
+    "server started (Developer -> Start Server)?"
+)
+
+
 @app.post("/api/ask")
 def ask(body: AskBody):
     t0 = time.time()
-    result = answer(body.query, top_k=body.top_k, model=_chat_model())
+    try:
+        result = answer(body.query, top_k=body.top_k, model=_chat_model())
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"{_LLM_DOWN} ({exc})")
     result["elapsed"] = round(time.time() - t0, 2)
     return result
 
 
 @app.post("/api/diff")
 def diff(body: DiffBody):
-    changes, raw = detect_changes(
-        read_document(body.v1), read_document(body.v2),
-        label_v1=body.v1, label_v2=body.v2, model=_chat_model(),
-    )
+    try:
+        changes, raw = detect_changes(
+            read_document(body.v1), read_document(body.v2),
+            label_v1=body.v1, label_v2=body.v2, model=_chat_model(),
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"{_LLM_DOWN} ({exc})")
     return {"changes": changes, "raw": raw}
 
 
