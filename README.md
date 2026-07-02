@@ -100,6 +100,12 @@ Then open **http://localhost:8000** in your browser.
 **Policy Change Detector:**
 5. Compare `telehealth_coverage_2024.md` vs `telehealth_coverage_2025.md` → structured list of changes
 
+**Claim adjudication (payment-integrity use case):**
+The corpus includes two **synthetic** sample claims (no real PHI) — `claim_mri_lumbar_2041.md`
+(compliant) and `claim_mri_lumbar_2042.md` (missing conservative-care documentation). Ask:
+6. *Based on the coverage policy, is the lumbar MRI (CPT 72148) on claim CLM-2041 medically necessary?* → **payable** (indication + duration + conservative care all documented)
+7. *As a payment-integrity reviewer, evaluate claim CLM-2042 for the lumbar MRI against the coverage policy.* → **flagged / likely deny** (no conservative treatment documented). This is the core Cotiviti workflow: judging a claim against policy, with the evidence shown.
+
 ---
 
 ## Project layout

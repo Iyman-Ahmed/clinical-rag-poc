@@ -1,0 +1,3 @@
+# Sample Claim CLM-2042 — Lumbar MRI (SYNTHETIC; no real PHI)
+
+CLM-2042 | DOS 2026-05-20 | provider NPI 1990000042 (synthetic) | patient PT-0042 (synthetic, 39M). Billed: CPT 72148 (MRI lumbar spine without contrast), 1 unit. Diagnosis: M54.5 low back pain. Medical-record documentation: about 10 days of low back pain after yard work, no leg radiation; conservative care attempted: none (MRI ordered at the first visit; no physical therapy, NSAID trial, or activity modification); no red-flag findings (no trauma, neurologic deficit, malignancy, infection, or cauda equina signs); expected impact on management not documented.
