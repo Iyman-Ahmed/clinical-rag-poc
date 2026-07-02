@@ -7,3 +7,12 @@ venv/
 report/node_modules/
 report/package-lock.json
 report/*.pdf
+
+# presentation build artifacts
+presentation/node_modules
+presentation/unpacked/
+presentation/*.pdf
+
+# editor/soffice temp files
+.~lock.*#
+*.tmp
