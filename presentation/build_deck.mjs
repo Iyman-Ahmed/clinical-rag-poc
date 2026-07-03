@@ -8,10 +8,10 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const SHOTS = path.join(DIR, "shots");
 const OUT = path.join(DIR, "Clinical_Policy_RAG.pptx");
 
-// ---- design tokens ----
-const BG = "0B0B0F", BG2 = "0E0E15", PANEL = "16161C", LINE = "24242E";
-const INK = "F5F5F7", MUTED = "9CA0AE", DIM = "6B7280";
-const VIOLET = "8B5CF6", MAGENTA = "E1348B", GREEN = "10B981", RED = "F04A4A", AMBER = "F59E0B";
+// ---- design tokens (light theme) ----
+const BG = "F7F8FA", BG2 = "F1ECFD", PANEL = "FFFFFF", LINE = "E4E7ED";
+const INK = "16171F", MUTED = "5C6472", DIM = "9AA0AC";
+const VIOLET = "6D28D9", MAGENTA = "DB2777", GREEN = "059669", RED = "DC2626", AMBER = "D97706";
 const F_MONO = "Courier New", F_HEAD = "Arial", F_BODY = "Calibri";
 
 const W = 13.333, H = 7.5, M = 0.62, CW = W - 2 * M;
@@ -55,10 +55,10 @@ const fit = (name, boxW, boxH) => {
 const shot = (s, name, box) => {
   const { x, y, w: bw, h: bh } = box; const f = fit(name, bw, bh);
   const ix = x + (bw - f.w) / 2, iy = y + (bh - f.h) / 2, pad = 0.11;
-  s.addShape(R, { x: ix - pad, y: iy - pad, w: f.w + 2 * pad, h: f.h + 2 * pad, fill: { color: "FFFFFF" }, line: { color: LINE, width: 1 }, rectRadius: 0.08, shadow: { type: "outer", color: "000000", opacity: 0.45, blur: 16, offset: 4, angle: 90 } });
+  s.addShape(R, { x: ix - pad, y: iy - pad, w: f.w + 2 * pad, h: f.h + 2 * pad, fill: { color: "FFFFFF" }, line: { color: LINE, width: 1 }, rectRadius: 0.08, shadow: { type: "outer", color: "8A93A6", opacity: 0.3, blur: 11, offset: 3, angle: 90 } });
   s.addImage({ path: path.join(SHOTS, name), x: ix, y: iy, w: f.w, h: f.h });
 };
-const card = (s, x, y, w, h, fill = PANEL) => s.addShape(R, { x, y, w, h, fill: { color: fill }, line: { color: LINE, width: 1 }, rectRadius: 0.07 });
+const card = (s, x, y, w, h, fill = PANEL) => s.addShape(R, { x, y, w, h, fill: { color: fill }, line: { color: LINE, width: 1 }, rectRadius: 0.07, shadow: { type: "outer", color: "9AA3B2", opacity: 0.22, blur: 8, offset: 2, angle: 90 } });
 const pill = (s, x, y, w, label, col = VIOLET) => {
   s.addShape(R, { x, y, w, h: 0.42, fill: { color: PANEL }, line: { color: col, width: 1 }, rectRadius: 0.21 });
   s.addText(label, { x, y, w, h: 0.42, fontFace: F_MONO, fontSize: 10.5, color: INK, align: "center", valign: "middle", charSpacing: 1 });
@@ -70,7 +70,7 @@ const note = (s, txt, y = 6.35) =>
 {
   const s = pptx.addSlide(); s.background = { color: BG };
   // large ghosted index / brand mark
-  s.addShape(R, { x: M, y: 2.35, w: 0.9, h: 0.9, fill: { color: VIOLET }, rectRadius: 0.22, shadow: { type: "outer", color: MAGENTA, opacity: 0.5, blur: 22, offset: 0, angle: 0 } });
+  s.addShape(R, { x: M, y: 2.35, w: 0.9, h: 0.9, fill: { color: VIOLET }, rectRadius: 0.22, shadow: { type: "outer", color: MAGENTA, opacity: 0.28, blur: 16, offset: 0, angle: 0 } });
   s.addText("◆", { x: M, y: 2.35, w: 0.9, h: 0.9, fontFace: F_HEAD, fontSize: 30, color: "FFFFFF", align: "center", valign: "middle" });
   s.addShape(RECT, { x: M + 0.02, y: 1.65, w: 0.16, h: 0.16, fill: { color: VIOLET } });
   s.addText("PROOF OF CONCEPT · COTIVITI GENAI INTERN ASSESSMENT", { x: M + 0.3, y: 1.58, w: 11, h: 0.3, fontFace: F_MONO, fontSize: 12, color: VIOLET, bold: true, charSpacing: 2 });
