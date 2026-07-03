@@ -137,6 +137,16 @@ explanation, not a real adjudication result.
 
 ---
 
+## What this project cannot do
+
+The prototype reliably answers direct policy questions and reasons through clinical scenarios
+that combine several rules **within** a policy — for example, weighing symptom duration, red
+flags, and conservative treatment together to reach a determination. Reasoning that spans
+**separate** policy documents is the current edge; it would benefit from a reranker, improved
+retrieval, or agentic reasoning in future iterations.
+
+---
+
 ## Why this fits Cotiviti
 
 This mirrors how a payment-integrity analyst works with a living policy library: **instant,

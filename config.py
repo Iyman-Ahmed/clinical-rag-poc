@@ -26,4 +26,4 @@ DATA_DIR = os.getenv("DATA_DIR", str(_ROOT / "data" / "policies"))
 # --- Chunking / retrieval ---
 CHUNK_SIZE = 700        # characters per chunk
 CHUNK_OVERLAP = 120     # overlap to preserve context across boundaries
-TOP_K = 4               # how many chunks to retrieve per query
+TOP_K = 6               # how many chunks to retrieve per query (whole source docs are then expanded in)

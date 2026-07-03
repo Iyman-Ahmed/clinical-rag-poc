@@ -16,3 +16,6 @@ presentation/*.pdf
 # editor/soffice temp files
 .~lock.*#
 *.tmp
+
+# slide render artifacts
+presentation/slide-*.jpg
