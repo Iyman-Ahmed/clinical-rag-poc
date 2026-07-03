@@ -32,6 +32,7 @@ const PX = {
   "claim_2041_approve.png": [1952, 1456],
   "claim_2042_deny.png": [1952, 2246],
   "change_detector.png": [1920, 2636],
+  "change_detector_3rows.png": [1920, 1690],
 };
 
 // ---- helpers ----
@@ -241,7 +242,7 @@ demo(11, "LIVE DEMO · CLAIM ADJUDICATION · CLM-2042 = FLAG / DENY",
 // 12 · CHANGE DETECTOR  (tall shot — maximize height, no bottom caption)
 demo(12, "LIVE DEMO · POLICY CHANGE DETECTOR · telehealth 2024 → 2025",
   "Every revision becomes a structured, plain-English diff.", null,
-  "change_detector.png", { x: M, y: 1.66, w: CW, h: 5.06 });
+  "change_detector_3rows.png", { x: M, y: 1.66, w: CW, h: 5.06 });
 
 // ============================================================ 13 · VALUE FOR COTIVITI
 {
