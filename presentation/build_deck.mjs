@@ -233,17 +233,15 @@ demo(10, "LIVE DEMO · CLAIM ADJUDICATION",
   "claim_2041_approve.png", { x: M, y: 1.85, w: CW, h: 4.35 },
   "Indication, symptom duration, and conservative care are all documented — the tool confirms medical necessity and cites the policy line.");
 
-// 11 · CLAIM DENY
-demo(11, "LIVE DEMO · CLAIM ADJUDICATION",
+// 11 · CLAIM DENY  (tall shot — maximize height, no bottom caption)
+demo(11, "LIVE DEMO · CLAIM ADJUDICATION · CLM-2042 = FLAG / DENY",
   null, [{ text: "CLM-2042 — ", options: { color: INK } }, { text: "Flag / Deny.", options: { color: RED } }],
-  "claim_2042_deny.png", { x: M, y: 1.8, w: CW, h: 4.45 },
-  "Same policy, same prompt, different claim — no conservative care documented, so the tool flags the exact missing requirement.");
+  "claim_2042_deny.png", { x: M, y: 1.66, w: CW, h: 5.06 });
 
-// 12 · CHANGE DETECTOR
-demo(12, "LIVE DEMO · POLICY CHANGE DETECTOR",
+// 12 · CHANGE DETECTOR  (tall shot — maximize height, no bottom caption)
+demo(12, "LIVE DEMO · POLICY CHANGE DETECTOR · telehealth 2024 → 2025",
   "Every revision becomes a structured, plain-English diff.", null,
-  "change_detector.png", { x: 3.7, y: 1.75, w: 5.9, h: 4.55 },
-  "telehealth_coverage_2024.md → telehealth_coverage_2025.md — tightened, loosened, added or removed, with the likely claim impact.");
+  "change_detector.png", { x: M, y: 1.66, w: CW, h: 5.06 });
 
 // ============================================================ 13 · VALUE FOR COTIVITI
 {
